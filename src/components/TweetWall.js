@@ -19,7 +19,7 @@ class TweetWall extends React.Component {
   // TODO: shouldComponentUpdate()
   shouldComponentUpdate(nextProps) {
     return (
-      this.state.tweets !== nextProps.newTweets
+      nextProps.newTweets.every(tweet => this.state.tweets.includes(tweet))
     )
   }
   // TODO: componentWillReceiveProps()
