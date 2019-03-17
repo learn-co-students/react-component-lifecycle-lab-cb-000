@@ -17,14 +17,14 @@ class TweetWall extends React.Component {
     });
   }
   
-  // TODO: shouldComponentUpdate()
+  // Update only if there are new tweets
   shouldComponentUpdate(nextProps) {
     return nextProps.newTweets.length > 0;
   }
   
   // Add new tweets to the beginning of the tweets array before updating
   componentWillReceiveProps(nextProps) {
-    const tweets = [...nextProps.newTweets.slice(), ...this.state.tweets.slice()];
+    const tweets = [...nextProps.newTweets, ...this.state.tweets];
     
     this.setState({tweets});
   }
