@@ -5,17 +5,9 @@ import { getTweets }from '../lib/mockAPI';
 
 class App extends React.Component {
 
-  constructor() {
-    super();
-
-    this.state = {
+    state = {
       latestTweets: []
-    };
   }
-
-  // TODO: componentWillMount()
-  // TODO: componentDidMount()
-  // TODO: componentWillUnmount()
 
   startInterval = () => {
     this.interval = setInterval(this.fetchTweets, 2000);
@@ -29,6 +21,12 @@ class App extends React.Component {
       latestTweets: newTweets
     });
   }
+
+  componentWillMount() { this.fetchTweets() }
+
+  componentDidMount() { this.startInterval() }
+
+  componentWillUnmount() { this.cleanUpInterval() }
 
   render() {
     return (
